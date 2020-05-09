@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+}
+
+.text-field {
+  position: relative;
+  width: 100%;
+  border: 1px solid transparent;
+  outline: none;
+  color: #000;
+  min-width: 1px;
+
+  &:focus {
+    border: 1px solid $input-focus-color;
+  }
+
+  &:hover {
+    border: 1px solid $input-hover-color;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    background-color: $input-hover-color;
+    color: #000;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
