@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import "~normalize.css";
+
+@import "variables";
+@import "mixins";
+@import "global";
+
+.excel {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #888;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 0;
+    padding: 10px 20px;
+  }
+  &__toolbar {
+    flex-grow: 0;
+    padding: 10px;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+  &__formula {
+    border-bottom: 1px solid $border-color;
+    flex-grow: 0;
+  }
+  &__table {
+    flex-grow: 1;
+    padding-bottom: 2px;
+  }
+}
+
+@import "header";
+@import "toolbar";
+@import "formula";
+@import "table";
+@import "dashboard";
