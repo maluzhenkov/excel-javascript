@@ -1,6 +1,5 @@
 class DOM {
   constructor(selector) {
-    // this._listeners = {};
     this.$el =
       typeof selector === "string"
         ? document.querySelector(selector)
@@ -21,7 +20,6 @@ class DOM {
   }
 
   on(eventType, callback) {
-    // this._listeners[eventType] = callback;
     this.$el.addEventListener(eventType, callback);
   }
   off(eventType, callback) {
@@ -38,6 +36,36 @@ class DOM {
       this.$el.appendChild(node);
     }
     return this;
+  }
+
+  parent(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  css(styles = {}) {
+    Object.keys(styles).forEach((key) => {
+      this.$el.style[key] = styles[key];
+    });
+  }
+
+  get width() {
+    return this.$el.scrollWidth;
+  }
+
+  get height() {
+    return this.$el.scrollHeight;
+  }
+
+  get data() {
+    return this.$el.dataset;
   }
 }
 
