@@ -26,8 +26,19 @@ function toColumn(content, index) {
   `;
 }
 
-function toCell(_, index) {
-  return `<div class="cell" data-cell="${index}" contenteditable></div>`;
+function toCell(row) {
+  // eslint-disable-next-line space-before-function-paren
+  return function (_, col) {
+    return `
+      <div 
+        class="cell" 
+        data-col="${col}" 
+        data-type="cell"
+        data-id="${col}:${row}" 
+        contenteditable
+      ></div>
+    `;
+  };
 }
 
 export function createTable(rowsCount = 15) {
@@ -43,9 +54,9 @@ export function createTable(rowsCount = 15) {
   // 1я строка
   rows.push(createRow(null, cols));
 
-  for (let i = 0; i < rowsCount; i++) {
-    const cells = new Array(colsCount).fill("").map(toCell).join("");
-    rows.push(createRow(i + 1, cells));
+  for (let row = 0; row < rowsCount; row++) {
+    const cells = new Array(colsCount).fill("").map(toCell(row)).join("");
+    rows.push(createRow(row + 1, cells));
   }
 
   return rows.join("");
