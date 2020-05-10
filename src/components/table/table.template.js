@@ -6,20 +6,28 @@ const _codes = {
 };
 
 function createRow(index, content) {
+  const info = index
+    ? index + '<div class="row-resize" data-resize="row"></div>'
+    : "";
   return `
-    <div class="row">
-      <div class="row__info">${index || ""}</div>
+    <div class="row" data-type="resizable">
+      <div class="row__info">${info}</div>
       <div class="row__data">${content}</div>
     </div>
   `;
 }
 
-function toCol(content) {
-  return `<div class="column">${content}</div>`;
+function toColumn(content, index) {
+  return `
+  <div class="column" data-type="resizable" data-col="${index}">
+    ${content}
+    <div class="col-resize" data-resize="col"></div>
+  </div>
+  `;
 }
 
-function toCell() {
-  return `<div class="cell" contenteditable></div>`;
+function toCell(_, index) {
+  return `<div class="cell" data-cell="${index}" contenteditable></div>`;
 }
 
 export function createTable(rowsCount = 15) {
@@ -29,10 +37,10 @@ export function createTable(rowsCount = 15) {
   const cols = new Array(colsCount)
     .fill("")
     .map((_, index) => toChar(_codes.A + index))
-    .map(toCol)
+    .map(toColumn)
     .join("");
 
-  // 1 строка
+  // 1я строка
   rows.push(createRow(null, cols));
 
   for (let i = 0; i < rowsCount; i++) {

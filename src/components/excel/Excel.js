@@ -1,4 +1,4 @@
-import { $ } from "../../core/DOM";
+import { $ } from "@core/DOM";
 
 export class Excel {
   constructor(selector, options) {
