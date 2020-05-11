@@ -15,7 +15,7 @@ class DOM {
   }
 
   text(text) {
-    if (typeof text === "string") {
+    if (typeof text !== "undefined") {
       this.$el.textContent = text;
       return this;
     }
@@ -75,15 +75,39 @@ class DOM {
     return this;
   }
 
+  toggleClass(className) {
+    if (this.$el.classList.contains(className)) {
+      this.$el.classList.remove(className);
+    } else {
+      this.$el.classList.add(className);
+    }
+    return this;
+  }
+
   css(styles = {}) {
     Object.keys(styles).forEach((key) => {
       this.$el.style[key] = styles[key];
     });
   }
 
+  getStyles(styles = []) {
+    return styles.reduce((res, styleName) => {
+      res[styleName] = this.$el.style[styleName];
+      return res;
+    }, {});
+  }
+
   focus() {
     this.$el.focus();
     return this;
+  }
+
+  attr(name, value) {
+    if (value !== undefined) {
+      this.$el.setAttribute(name, value);
+      return this;
+    }
+    return this.$el.getAttribute(name);
   }
 
   id(parse) {
@@ -111,7 +135,10 @@ class DOM {
 }
 
 export function $(selector) {
-  return new DOM(selector);
+  if (selector) {
+    return new DOM(selector);
+  }
+  return false;
 }
 
 $.create = (tagName, classes = "") => {

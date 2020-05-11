@@ -33,6 +33,10 @@ body {
   align-items: center;
   user-select: none;
   cursor: pointer;
+  &.active {
+    color: #000;
+    background-color: $input-hover-color;
+  }
   &:hover {
     background-color: $input-hover-color;
     color: #000;
