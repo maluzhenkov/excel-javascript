@@ -4,6 +4,7 @@ import {
   CHANGE_STYLES,
   APPLY_STYLES,
   CHANGE_TITLE,
+  UPDATE_DATE,
 } from "./types";
 
 export function rootReducer(state, action) {
@@ -28,7 +29,7 @@ export function rootReducer(state, action) {
     case CHANGE_TITLE:
       return {
         ...state,
-        tableTitle: action.data,
+        title: action.data, // tableTitle
       };
     case APPLY_STYLES:
       field = "stylesState";
@@ -41,6 +42,8 @@ export function rootReducer(state, action) {
         [field]: val,
         currentStyles: { ...state.currentStyles, ...action.data.value },
       };
+    case UPDATE_DATE:
+      return { ...state, openedDate: new Date().toJSON() };
     default:
       return state;
   }
