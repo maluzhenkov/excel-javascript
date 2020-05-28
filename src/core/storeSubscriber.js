@@ -23,6 +23,11 @@ export class StoreSubscriber {
       });
 
       this.prevState = this.store.getState();
+
+      // Для разработки
+      if (process.env.NODE_ENV === "development") {
+        window["rebux"] = this.prevState;
+      }
     });
   }
 
