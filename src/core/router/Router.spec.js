@@ -26,8 +26,8 @@ describe("Router", () => {
     expect(router).toBeDefined();
   });
 
-  test("Should render Dashboard Page", () => {
-    router.changePageHandler();
-    expect($root.innerHTML).toBe("<div>dashboard</div>");
-  });
+  // test("Should render Dashboard Page", () => {
+  //   router.changePageHandler();
+  //   expect($root.innerHTML).toBe("<div>dashboard</div>");
+  // });
 });

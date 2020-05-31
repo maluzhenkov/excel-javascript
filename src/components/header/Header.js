@@ -17,7 +17,7 @@ export class Header extends ExcelComponent {
   static className = "excel__header";
 
   toHTML() {
-    const title = this.store.getState().tableTitle || defaultTitle;
+    const title = this.store.getState().title || defaultTitle;
     return `
         <div class="nav">
           <input
