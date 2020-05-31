@@ -21,5 +21,3 @@ export function createStore(rootReducer, initialState = {}) {
     },
   };
 }
-
-// TODO переписать на класс
