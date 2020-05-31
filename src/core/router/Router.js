@@ -1,4 +1,4 @@
-import { $ } from "@core/DOM";
+import { $ } from "../DOM";
 import { ActiveRoute } from "./ActiveRoute";
 
 export class Router {
